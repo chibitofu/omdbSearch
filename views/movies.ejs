@@ -1,0 +1,75 @@
+<div class="container">
+<div id="topRow" class="row">
+  <div class="col-xs-2">
+      <a href="http://localhost:3000/"><p class="logo text-center pull-right">OMDB<p></a>
+  </div>
+  <div id="topRow" class="col-xs-6">
+    <p class="pageTitle text-center pull-right">Movie Info</p>
+  </div>
+  <div class="col-xs-4">
+    <form class="navbar-form navbar-right searchBar" method="GET" role="search" action="/search">
+       <div class="form-group">
+         <input type="text" class="form-control" name="q" placeholder="Search">
+         <button type="submit" class="btn btn-default">Submit</button>
+       </div>
+     </form>
+  </div>
+</div>
+<div id="midRow" class="row">
+  <div class="col-xs-3">
+  </div>
+  <div class="col-xs-3">
+        <% if(movie.Poster !== 'N/A'){ %>
+        <img src="<%= movie.Poster %>" class="poster pull-left img-responsive">
+      <% } else { %>
+        <img src="http://i.imgur.com/E4GiOnm.png" class="poster img-responsive">
+      <% } %>
+    <p class="rating text-center">IMBD <%= movie.imdbRating %> / 10</p>
+    <p id="rating" class="text-center"></p>
+    <p class="rottenTitle">Rotten Tomatoes
+      <% if( movie.tomatoMeter >= 60){ %>
+        <span><img src="http://i.imgur.com/1ACDPFCt.png" class="rt img-responsive"> Fresh</span>
+
+      <%  } else { %>
+        <span><img src="http://i.imgur.com/0tPbP2M.png" class="rt img-responsive"> Rotten</span>
+      <% }; %>
+  </p>
+    <p class="rottenRate"><%= movie.tomatoConsensus %></p>
+  </div>
+<div class="col-xs-4 text-left pull-left">
+<a href="http://www.imdb.com/title/<%= movie.imdbID %>/" target="_blank"><h3 class="title" ><%= movie.Title %></h3></a>
+<p class="plot"><%= movie.Plot %></p>
+<p class="year">
+<%= movie.Year %>
+<%= movie.Rated %>
+</p>
+<p class="director"><span class="lead">Director: </span> <%= movie.Director %></p>
+<p class="actors"><span class="lead">Actors: </span> <%= movie.Actors %></p>
+<p class="genre"><span class="lead">Genre: </span> <%= movie.Genre %></p>
+
+<!-- Mahalo to Paul Davidson for finding this code for me. -->
+<button type="button" class="btn btn-success back" onclick="goBack()">Search Results</button>
+<script>
+function goBack(){
+  window.history.back();
+}
+
+//Mahalo to Daniel Smith for help with this.//
+for(var i = 0; i < Math.floor(<%= movie.imdbRating %>); i++){
+  document.querySelector('#rating').innerHTML += '<i class="fa fa-star"></i>';
+}if(<%= movie.imdbRating %> % 1 != 0){
+  document.querySelector('#rating').innerHTML += '<i class="fa fa-star-half-o"></i>';
+}
+for(var i = Math.floor(<%= movie.imdbRating %> + 0.9); i < 10; i++){
+    document.querySelector('#rating').innerHTML += '<i class="fa fa-star-o"></i>';
+}
+</script>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+<div class="row">
+  <div id="bottomRow" class="col-xs-12">
+  </div>
+</div>
+</div>

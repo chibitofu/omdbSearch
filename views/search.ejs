@@ -1,0 +1,54 @@
+<div class="container">
+<div id="topRow"  class="row topRow">
+  <div class="col-xs-2">
+      <a href="http://localhost:3000/"><p class="logo text-center pull-right">OMDB<p></a>
+  </div>
+  <div class="col-xs-6">
+     <p class="text-center pageTitle pull-right">Movie Titles</p>
+  </div>
+  <div class="col-xs-4">
+    <form class="navbar-form navbar-right searchBar" method="GET" role="search" action="/search">
+       <div class="form-group">
+         <input type="text" class="form-control" name="q" placeholder="Search">
+         <button type="submit" class="btn btn-default">Submit</button>
+       </div>
+     </form>
+  </div>
+</div>
+<div id="midRow" class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+<!-- Mahalo to Ed Gervais for the idea to put pictures and year in the list. Also to put the searchbar at the top of every page.-->
+ <ul style="list-style-type: none" class="">
+   <% movie.forEach(function(data){%>
+   <a href="/movies/<%=data.imdbID%>"><li class="text-center movieItem"><div>
+       <% if(data.Poster !== 'N/A'){ %>
+       <img src="<%= data.Poster %>" class="thumbnail pull-left img-responsive">
+       <% } else { %>
+         <img src="http://i.imgur.com/8HYD6d8.png" class="thumbnail pull-left img-responsive">
+         <% } %>
+     <p class="text-right listItem"><%= data.Title %></p>
+     <p class="text-right listItem"><%= data.Year %></p>
+  </div></li></a>
+   <% }); %>
+  </ul>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+<div id="bottomRow" class="row">
+  <div class="col-xs-4">
+  </div>
+  <div class="col-xs-4 text-center">
+    <button type="button" class="btn btn-danger back" onclick="goBack()">Search</button>
+    <script>
+    function goBack(){
+      window.history.back();
+    }
+    </script>
+  </div>
+  <div class="col-xs-4">
+  </div>
+</div>
+</div>
