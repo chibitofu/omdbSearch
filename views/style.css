@@ -46,6 +46,10 @@ footer {
   color: rgb(255, 255, 255);
 }
 
+.pageTitle.other{
+  margin-right: 50px;
+}
+
 .searchBar {
   margin-top: 25px;
 }
@@ -69,6 +73,16 @@ footer {
 
 .listItem {
   margin: 0 20px 0 0;
+}
+.fav {
+  margin-left: 25px;
+  margin-top: 25px;
+  margin-right: 5px;
+  display: inline-block;
+}
+.delete {
+  margin-right: 25px;
+  display: inline-block;
 }
 
 .movieItem {
@@ -181,4 +195,14 @@ a:hover {
   color: rgb(238, 189, 14);
   text-shadow: 0px 0px 3px rgb(20, 20, 20);
   font-size: 16px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.favoriteButt {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: rgb(255, 255, 255);
 }

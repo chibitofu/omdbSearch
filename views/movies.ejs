@@ -4,7 +4,7 @@
       <a href="https://omdb-search.herokuapp.com/"><p class="logo text-center pull-right">OMDB<p></a>
   </div>
   <div id="topRow" class="col-xs-6">
-    <p class="pageTitle text-center pull-right">Movie Info</p>
+    <p class="pageTitle other text-center pull-right">Movie Info</p>
   </div>
   <div class="col-xs-4">
     <form class="navbar-form navbar-right searchBar" method="GET" role="search" action="/search">
@@ -37,7 +37,12 @@
     <p class="rottenRate"><%= movie.tomatoConsensus %></p>
   </div>
 <div class="col-xs-4 text-left pull-left">
+
 <a href="http://www.imdb.com/title/<%= movie.imdbID %>/" target="_blank"><h3 class="title" ><%= movie.Title %></h3></a>
+<form method="POST" action="../favorites">
+  <input type="text" class="hidden" value="<%= movie.imdbID %>" name="id">
+  <button type="submit" class="btn btn-warning favoriteButt glyphicon glyphicon-star"></button>
+</form>
 <p class="plot"><%= movie.Plot %></p>
 <p class="year">
 <%= movie.Year %>
