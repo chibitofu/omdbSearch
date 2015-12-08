@@ -58,7 +58,7 @@ router.delete('/favorites', function(req, res) {
   var id = parseInt(req.body.id);
   db.favorites.find({where: {id: id}}).then(function(id){
     id.destroy().then(function(u){
-      res.redirect('favorites');
+      res.send('success');
     });
   });
 });
