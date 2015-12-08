@@ -1,8 +1,8 @@
 <div class="container">
 <div id="topRow" class="row">
   <div class="col-xs-2">
-      <a href="https://omdb-search.herokuapp.com/"><p class="logo text-center pull-right">OMDB<p></a>
-        <a href="https://omdb-search.herokuapp.com/favorites" class="logo text-center pull-right"> Favorites </a>
+      <a href="https://omdb-search.herokuapp.com/"><p class="logo text-center pull-right"> OMDB</p></a>
+        <a href="https://omdb-search.herokuapp.com/favorites"><p class="logo text-center pull-left favlink">Favorites </p></a>
   </div>
   <div id="topRow" class="col-xs-6">
     <p class="pageTitle other text-center pull-right">Favorite Movies</p>
@@ -18,11 +18,17 @@
 </div>
 <div id="midRow" class="row">
   <div class="col-xs-3">
+    <button type="button" class="btn btn-success back pull-right" onclick="goBack()">Movie Info</button>
+    <script>
+    function goBack(){
+      window.history.back();
+    }
+    </script>
   </div>
   <div class="col-xs-6">
     <% info.forEach(function(favorites){ %>
 
-        <div class="movieItem">
+        <div class="movieItem favlist">
           <a href="http://www.imdb.com/title/<%= favorites.imdbid %>" >
           <% if(favorites.poster !== 'N/A'){ %>
             <img class="thumbnail pull-left" src="<%= favorites.poster %>">
@@ -32,7 +38,7 @@
       <p class="text-right listItem fav"><%= favorites.title %></p>
       <br>
       <p class="text-right listItem fav"><%=favorites.year%></p></a>
-      <button id="<%= favorites.id %>" type="button" class="delete-button btn-lg btn-danger pull-right delete">X</button>
+      <button id="<%= favorites.id %>" type="submit" class="delete-button btn-lg btn-danger pull-right delete glyphicon glyphicon-remove"></button>
     </div>
     <% }); %>
   </div>

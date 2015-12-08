@@ -206,3 +206,17 @@ a:hover {
   font-size: 16px;
   color: rgb(255, 255, 255);
 }
+
+.favlink {
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: rgb(241, 177, 12);
+}
+
+.favlist {
+  margin-bottom: 15px;
+}
+
+.favlink a:hover {
+  color: rgb(235, 20, 173);
+}
